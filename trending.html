@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Trending GIFs | GIPHY Search Engine</title>
+
+    <!-- Reuse the same stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- Navigation Bar -->
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        GIPHY Search Engine
+    </a>
+
+    <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="trending.html">Trending</a>
+                <a href="contact.html">Contact</a>
+    </div>
+
+</nav>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <section class="trending">
+
+            <h1>Trending GIFs</h1>
+
+            <p class="page-description">
+                Explore GIFs that are currently trending on GIPHY.
+            </p>
+
+            <!--
+                Loading, error, and GIF content
+                will be inserted here with JavaScript.
+            -->
+            <div
+                class="gif-container"
+                id="gifContainer"
+            >
+                <p>Loading GIFs...</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- GIF Details Modal -->
+    <div class="modal" id="gifModal">
+
+        <div class="modal-content">
+
+            <!-- Close Button -->
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Close modal"
+            >
+                &times;
+            </button>
+
+
+            <!-- Larger GIF -->
+            <img
+                id="modalGif"
+                class="modal-gif"
+                src=""
+                alt=""
+            >
+
+
+            <!-- GIF Title -->
+            <h2 id="modalTitle"></h2>
+
+
+            <!-- Modal Buttons -->
+            <div class="modal-buttons">
+
+                <button id="copyButton">
+                    Copy GIF URL
+                </button>
+
+                <a
+                    id="giphyLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Open on GIPHY
+                </a>
+
+            </div>
+
+
+            <!-- Copy Confirmation -->
+            <p id="copyMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>GIPHY Search Engine</h3>
+
+                <p>
+                    &copy; 2026 GIPHY Search Engine.
+                    All rights reserved.
+                </p>
+
+            </div>
+
+
+            <ul class="footer-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="trending.html">Trending</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Trending Page JavaScript -->
+    <script src="trending.js"></script>
+
+</body>
+
+</html>
