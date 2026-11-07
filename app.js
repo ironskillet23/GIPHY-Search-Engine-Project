@@ -3,7 +3,6 @@
 // -----------------------------
 
 const API_KEY = "6QXNavqpdGMKCyFdbQZUwiAqe2PRVZoD";
-
 const BASE_URL = "https://api.giphy.com/v1/gifs";
 
 
@@ -12,11 +11,8 @@ const BASE_URL = "https://api.giphy.com/v1/gifs";
 // -----------------------------
 
 const searchInput = document.getElementById("searchInput");
-
 const searchButton = document.getElementById("searchButton");
-
 const gifContainer = document.getElementById("gifContainer");
-
 const trendingHeading = document.querySelector(".trending h2");
 
 // -----------------------------
@@ -24,22 +20,16 @@ const trendingHeading = document.querySelector(".trending h2");
 // -----------------------------
 
 const gifModal = document.getElementById("gifModal");
-
 const modalGif = document.getElementById("modalGif");
-
 const modalTitle = document.getElementById("modalTitle");
-
 const modalClose = document.getElementById("modalClose");
-
 const copyButton = document.getElementById("copyButton");
-
 const giphyLink = document.getElementById("giphyLink");
-
 const copyMessage = document.getElementById("copyMessage");
-
 
 // Store the selected GIF URL
 let selectedGifUrl = "";
+
 
 // -----------------------------
 // Search Button Event
@@ -267,92 +257,107 @@ function displayGIFs(gifs) {
 // -----------------------------
 
 function openModal(gif) {
+    // Confirm that the modal elements exist
+    if (
+        !gifModal ||
+        !modalGif ||
+        !modalTitle ||
+        !giphyLink ||
+        !copyMessage
+    ) {
+        console.error("One or more modal HTML elements could not be found.");
+        return;
+    }
 
-    // Display larger GIF
+    // Confirm that the GIF contains an original image
+    if (
+        !gif.images ||
+        !gif.images.original ||
+        !gif.images.original.url
+    ) {
+        console.error("The selected GIF does not have an original image URL.");
+        return;
+    }
+
+    // Display the larger GIF
     modalGif.src = gif.images.original.url;
+    modalGif.alt = gif.title || "GIPHY GIF";
 
-    modalGif.alt =
-        gif.title || "GIPHY GIF";
+    // Display the GIF title
+    modalTitle.textContent = gif.title || "Untitled GIF";
 
+    // Save the direct GIF URL for the copy button
+    selectedGifUrl = gif.images.original.url;
 
-    // Display GIF title
-    modalTitle.textContent =
-        gif.title || "Untitled GIF";
-
-
-    // Save direct GIF URL for copy button
-    selectedGifUrl =
-        gif.images.original.url;
-
-
-    // Set GIPHY link
+    // Set the GIPHY page link
     giphyLink.href = gif.url;
 
-
-    // Clear old copy message
+    // Clear the previous copy message
     copyMessage.textContent = "";
 
-
-    // Show modal
+    // Show the modal
     gifModal.classList.add("show");
+
+    // Prevent the page behind the modal from scrolling
+    document.body.style.overflow = "hidden";
 }
 
+
 // -----------------------------
-// Close Modal
+// Close GIF Modal
 // -----------------------------
 
 function closeModal() {
-
     gifModal.classList.remove("show");
 
+    // Restore page scrolling
+    document.body.style.overflow = "";
 }
 
 
-// Close using X button
+// Close using the X button
 modalClose.addEventListener("click", closeModal);
 
-gifModal.addEventListener("click", function(event) {
 
+// Close by clicking the dark background
+gifModal.addEventListener("click", function (event) {
     if (event.target === gifModal) {
-
         closeModal();
-
     }
-
 });
 
-document.addEventListener("keydown", function(event) {
 
-    if (event.key === "Escape") {
-
+// Close by pressing Escape
+document.addEventListener("keydown", function (event) {
+    if (
+        event.key === "Escape" &&
+        gifModal.classList.contains("show")
+    ) {
         closeModal();
-
     }
-
 });
 
 // -----------------------------
 // Copy GIF URL
 // -----------------------------
 
-copyButton.addEventListener("click", async function() {
+// -----------------------------
+// Copy GIF URL
+// -----------------------------
 
-    try {
-
-        await navigator.clipboard.writeText(selectedGifUrl);
-
-        copyMessage.textContent =
-            "GIF URL copied!";
-
-    } catch (error) {
-
-        console.error(error);
-
-        copyMessage.textContent =
-            "Unable to copy GIF URL.";
-
+copyButton.addEventListener("click", async function () {
+    if (selectedGifUrl === "") {
+        copyMessage.textContent = "No GIF URL is available.";
+        return;
     }
 
+    try {
+        await navigator.clipboard.writeText(selectedGifUrl);
+        copyMessage.textContent = "GIF URL copied!";
+    } catch (error) {
+        console.error(error);
+        copyMessage.textContent = "Unable to copy GIF URL.";
+    }
 });
 
 // -----------------------------

@@ -69,21 +69,30 @@
 
     </main>
 
-<!-- GIF Details Modal -->
-<div class="modal" id="gifModal">
+<!-- =========================================
+     GIF DETAILS MODAL
+========================================= -->
 
+<div
+    id="gifModal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+>
     <div class="modal-content">
 
         <!-- Close Button -->
         <button
-            class="modal-close"
             id="modalClose"
-            aria-label="Close modal"
+            class="modal-close"
+            type="button"
+            aria-label="Close GIF details"
         >
             &times;
         </button>
 
-        <!-- Larger GIF Preview -->
+        <!-- Selected GIF -->
         <img
             id="modalGif"
             class="modal-gif"
@@ -91,13 +100,17 @@
             alt=""
         >
 
-        <!-- GIF Title -->
-        <h2 id="modalTitle"></h2>
+        <!-- Selected GIF Title -->
+        <h2 id="modalTitle">
+            GIF Title
+        </h2>
 
         <!-- Modal Buttons -->
         <div class="modal-buttons">
-
-            <button id="copyButton">
+            <button
+                id="copyButton"
+                type="button"
+            >
                 Copy GIF URL
             </button>
 
@@ -107,16 +120,16 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Open on GIPHY
+                View on GIPHY
             </a>
-
         </div>
 
-        <!-- Copy confirmation -->
-        <p id="copyMessage"></p>
-
+        <!-- Copy Confirmation or Error Message -->
+        <p
+            id="copyMessage"
+            aria-live="polite"
+        ></p>
     </div>
-
 </div>
 
     <!-- Footer -->

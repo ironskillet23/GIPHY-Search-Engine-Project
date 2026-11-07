@@ -4,13 +4,10 @@
 
 const contactForm =
     document.getElementById("contactForm");
-
 const fullName =
     document.getElementById("fullName");
-
 const email =
     document.getElementById("email");
-
 const message =
     document.getElementById("message");
 
@@ -19,13 +16,10 @@ const message =
 
 const nameError =
     document.getElementById("nameError");
-
 const emailError =
     document.getElementById("emailError");
-
 const messageError =
     document.getElementById("messageError");
-
 const successMessage =
     document.getElementById("successMessage");
 
