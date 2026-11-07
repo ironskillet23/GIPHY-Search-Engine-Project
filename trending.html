@@ -61,59 +61,69 @@
     </main>
 
 
-    <!-- GIF Details Modal -->
-    <div class="modal" id="gifModal">
+<!-- =========================================
+     GIF DETAILS MODAL
+========================================= -->
 
-        <div class="modal-content">
+<div
+    id="gifModal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+>
+    <div class="modal-content">
 
-            <!-- Close Button -->
+        <!-- Close Button -->
+        <button
+            id="modalClose"
+            class="modal-close"
+            type="button"
+            aria-label="Close GIF details"
+        >
+            &times;
+        </button>
+
+        <!-- Selected GIF -->
+        <img
+            id="modalGif"
+            class="modal-gif"
+            src=""
+            alt=""
+        >
+
+        <!-- Selected GIF Title -->
+        <h2 id="modalTitle">
+            GIF Title
+        </h2>
+
+        <!-- Modal Buttons -->
+        <div class="modal-buttons">
             <button
-                class="modal-close"
-                id="modalClose"
-                aria-label="Close modal"
+                id="copyButton"
+                type="button"
             >
-                &times;
+                Copy GIF URL
             </button>
 
-
-            <!-- Larger GIF -->
-            <img
-                id="modalGif"
-                class="modal-gif"
-                src=""
-                alt=""
+            <a
+                id="giphyLink"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-
-
-            <!-- GIF Title -->
-            <h2 id="modalTitle"></h2>
-
-
-            <!-- Modal Buttons -->
-            <div class="modal-buttons">
-
-                <button id="copyButton">
-                    Copy GIF URL
-                </button>
-
-                <a
-                    id="giphyLink"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Open on GIPHY
-                </a>
-
-            </div>
-
-
-            <!-- Copy Confirmation -->
-            <p id="copyMessage"></p>
-
+                View on GIPHY
+            </a>
         </div>
 
+        <!-- Copy Confirmation or Error Message -->
+        <p
+            id="copyMessage"
+            aria-live="polite"
+        ></p>
+
     </div>
+</div>
 
 
     <!-- Footer -->

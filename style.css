@@ -549,12 +549,16 @@ img {
     justify-content: center;
     align-items: center;
 
-    padding: clamp(10px, 3vw, 20px);
+    padding: 20px;
 
     background-color:
         rgba(0, 0, 0, 0.85);
 }
 
+/* Show the modal */
+.modal.show {
+    display: flex;
+}
 
 /* Modal Content */
 
@@ -583,6 +587,9 @@ img {
         rgba(0, 0, 0, 0.6);
 }
 
+.modal.show .modal-content {
+    animation: modal-open 0.25s ease;
+}
 
 /* Modal Close Button */
 
