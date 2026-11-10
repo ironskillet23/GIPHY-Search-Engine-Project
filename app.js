@@ -341,10 +341,6 @@ document.addEventListener("keydown", function (event) {
 // Copy GIF URL
 // -----------------------------
 
-// -----------------------------
-// Copy GIF URL
-// -----------------------------
-
 copyButton.addEventListener("click", async function () {
     if (selectedGifUrl === "") {
         copyMessage.textContent = "No GIF URL is available.";
@@ -410,8 +406,7 @@ async function loadTrendingGIFs() {
         const gifResults = result.data;
 
 
-        // filter() creates a new array containing
-        // only GIFs with the required image data
+        // filter() creates a new array containing only GIFs with the required image data
         const validGIFs = gifResults.filter(function(gif) {
 
             return gif.images &&
@@ -421,8 +416,7 @@ async function loadTrendingGIFs() {
         });
 
 
-        // map() creates a new array containing
-        // only the GIF information our site needs
+        // map() creates a new array containing only the GIF information site needs
         const formattedGIFs = validGIFs.map(function(gif) {
 
             return {
